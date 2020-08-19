@@ -1,0 +1,8 @@
+@import './partials/mixins';
+@import './partials/variables';
+@import './partials/typography';
+
+body {
+    background-color: $mainBackgroundColor;
+    font-family: 'Poppins';
+}

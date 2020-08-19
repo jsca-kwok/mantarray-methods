@@ -1,0 +1,10 @@
+@import '../../global-styles/styles.scss';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}

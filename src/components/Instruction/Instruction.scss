@@ -1,0 +1,12 @@
+@import '../../global-styles/styles.scss';
+
+.instruction {
+    margin: 0 1.2rem;
+    @include tablet {
+        order: -1;
+        width: 45vw;
+    }
+    &__intro {
+        color: $mainFontColor;
+    }
+}

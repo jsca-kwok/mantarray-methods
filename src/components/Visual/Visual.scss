@@ -1,0 +1,17 @@
+@import '../../global-styles/styles.scss';
+
+.visual {
+    background-color: $secondaryBackgroundColor;
+    width: 100vw;
+    height: 60vh;
+    padding: 1.2rem;
+    @include tablet {
+        width: 55vw;
+        height: 100vh;
+        border-top-left-radius: 15px;
+    }
+    &__manta-ray {
+        width: 9%;
+        vertical-align: bottom;
+    }
+}

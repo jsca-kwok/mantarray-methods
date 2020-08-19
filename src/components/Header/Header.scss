@@ -1,0 +1,19 @@
+@import '../../global-styles/styles.scss';
+
+.header {
+    color: $mainFontColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include tablet {
+        justify-content: flex-start;
+    }
+    &__logo {
+        height: 40px;
+        padding: 0.4rem;
+        transform: rotate(25deg);
+    }
+    &__heading {
+        margin-right: 2.2rem;
+    }
+}
