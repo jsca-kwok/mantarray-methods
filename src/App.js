@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Game} />
-        <Route path='/levels/:id' component={Game} />
+        <Route path='/level/:level' component={Game} />
       </Switch>
     </BrowserRouter>
   );

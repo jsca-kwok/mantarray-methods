@@ -1,14 +1,12 @@
 import React from 'react';
 import './SelectLevel.scss';
 
-const SelectLevel = () => {
+const SelectLevel = ({ newLevel }) => {
     return (
-        <>
-            <select>
-                <option>Level 1</option>
-                <option>Level 2</option>
-            </select>
-        </>
+        <select className='select' onChange={(e) => newLevel(e)}>
+            <option className='select__option' value='1'>Level 1</option>
+            <option className='select__option' value='2'>Level 2</option>
+        </select>
     );
 }
 

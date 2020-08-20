@@ -9,3 +9,20 @@
         @content;
     }
 }
+
+// fonts
+@mixin codeFont {
+    font-family: 'Anonymous Pro';
+    font-weight: bold;
+}
+
+// button
+@mixin buttonStyle {
+    background-color: $mainButtonColor;
+    border-radius: 5px;
+    color: $mainFontColor;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+}

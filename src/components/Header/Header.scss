@@ -8,12 +8,19 @@
     @include tablet {
         justify-content: flex-start;
     }
+    &__logo-container {
+        background-color: $secondaryBackgroundColor;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 10px;
+    }
     &__logo {
         height: 40px;
         padding: 0.4rem;
         transform: rotate(25deg);
     }
     &__heading {
-        margin-right: 2.2rem;
+        margin-right: 1.1rem;
     }
 }

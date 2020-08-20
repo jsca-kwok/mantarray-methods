@@ -12,6 +12,42 @@
     }
     &__manta-ray {
         width: 9%;
-        vertical-align: bottom;
+        vertical-align: middle;
+    }
+    &__input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $specialBackgroundColor;
+        padding: 1.2rem;
+        border-radius: 10px;
+        box-shadow: 2px 2px 7px rgba(0,0,0,0.3);
+    }
+    &__input-button {
+        &--mobile {
+            @include buttonStyle;
+            width: 75px;
+            margin-top: 30px;
+            @include tablet {
+                display: none;
+            }
+        }
+        &--tablet {
+        display: none;
+            @include tablet {
+                @include buttonStyle;
+                margin: 10px 0 10px 50px;
+                width: 75px;
+            }
+        }
+    }
+    &__code {
+        @include codeFont;
+        &--input {
+            font-size: 1.6rem;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+        }
     }
 }
