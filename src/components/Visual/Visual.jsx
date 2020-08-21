@@ -26,11 +26,11 @@ const Visual = () => {
                 ];
             </p>
             <div className='visual__input-container'>
-                <p className='visual__code'>mantArray.</p>
+                <span className='visual__code'>mantArray.</span>
                 <input className='visual__code visual__code--input' placeholder={`type method here`}></input>
-                <p className='visual__code'>(</p>
+                <span className='visual__code'>(</span>
                 <img className='visual__manta-ray' src={purpleRay} alt='manta ray' />
-                <p className='visual__code'>);</p>
+                <span className='visual__code'>);</span>
                 <button className='visual__input-button--tablet'>Go!</button>
             </div>
             <button className='visual__input-button--mobile'>Go!</button>
