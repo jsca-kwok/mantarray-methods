@@ -15,19 +15,50 @@ const Visual = ({ currentLevel, newLevel }) => {
     const [inputTwoCorrect, setInputTwoCorrect] = useState(false);
 
     const checkAnswer = (input) => {
-        if (input === inputOne && input === currentLevel.answerOne) {
+        // push
+        if (input === inputOne && input === currentLevel.answerOne && currentLevel.answerOne === 'push') {
             setInputOneCorrect(true);
-            // add purple ray to original array if correct
-            const mantaImgsCopy = mantaImgs.slice();
-            mantaImgsCopy.unshift(purpleRay);
-            setMantaImgs(mantaImgsCopy);
+            pushArray();
         };
-        if (input === inputTwo && input === currentLevel.answerTwo) {
+        // pop
+        if (input === inputTwo && input === currentLevel.answerTwo && currentLevel.answerTwo === 'pop') {
             setInputTwoCorrect(true);
-            const mantaImgsCopy = mantaImgs.slice();
-            mantaImgsCopy.shift();
-            setMantaImgs(mantaImgsCopy);
-        }
+            popArray();
+        };
+        // shift
+        if (input === inputOne && input === currentLevel.answerOne && currentLevel.answerOne === 'unshift') {
+            setInputOneCorrect(true);
+            shiftArray();
+        };
+        // unshift
+        if (input === inputTwo && input === currentLevel.answerTwo && currentLevel.answerTwo === 'shift') {
+            setInputTwoCorrect(true);
+            unshiftArray();
+        };
+    }
+
+    const pushArray = () => {
+        const mantaImgsCopy = mantaImgs.slice();
+        mantaImgsCopy.push(purpleRay);
+        setMantaImgs(mantaImgsCopy);
+    }
+
+    const popArray = () => {
+        const mantaImgsCopy = mantaImgs.slice();
+        mantaImgsCopy.pop();
+        setMantaImgs(mantaImgsCopy);
+    }
+
+    const shiftArray = () => {
+        const mantaImgsCopy = mantaImgs.slice();
+        mantaImgsCopy.unshift(purpleRay);
+        setMantaImgs(mantaImgsCopy);
+    }
+
+    const unshiftArray = () => {
+        const mantaImgsCopy = mantaImgs.slice();
+        mantaImgsCopy.shift();
+        setMantaImgs(mantaImgsCopy);
     }
 
     return (

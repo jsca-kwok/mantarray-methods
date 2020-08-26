@@ -9,16 +9,16 @@ class Game extends React.Component {
         currentLevel: 1,
         1: {
             id: 1, 
-            description: 'description of array methods', 
-            questionOne: 'description of instructions', 
-            questionTwo: 'description of instructions',
-            answerOne: 'answer to questionOne',
-            answerTwo: 'answer to questionTwo'
+            description: 'The .push() method adds an item to the end of an array and returns the new array length. The .pop() method removes and returns the last item of an array. Both these methods alter the original array.', 
+            questionOne: `Hey look! Where are all of Purple Ray's friends headed? Help him join his buddies at the end of the line.`, 
+            questionTwo: 'On second thought, Purple Ray wants to practice his JavaScript array methods. Take him out so he can study instead.',
+            answerOne: 'push',
+            answerTwo: 'pop'
         },
         2: {
             id: 2, 
             description: 'The .unshift() method adds an item to the start of an array and returns the new array length. The .shift() method removes and returns the first item of an array. Both these methods alter the original array.', 
-            questionOne: 'Purple Ray is a jerk sometimes and wants to budge. Help him get to the front of the line.',
+            questionOne: 'Purple Ray is a jerk sometimes and wants to butt in line. Help him get to the front of the line.',
             questionTwo: `Hey! It's rude to budge. Throw Purple Ray out of the line.`,
             answerOne: 'unshift',
             answerTwo: 'shift'
@@ -34,7 +34,7 @@ class Game extends React.Component {
     render() {
         return (
             <>
-            <Header newLevel={this.newLevel}/>
+            <Header newLevel={this.newLevel} currentLevel={this.state.currentLevel}/>
             <main className='main'>
                 <Visual className='main__visual' currentLevel={this.state[this.state.currentLevel]} newLevel={this.newLevel}/>
                 <Instruction className='main__instruction' description={this.state[this.state.currentLevel].description}/>
