@@ -62,13 +62,14 @@ const LevelFive = ({ currentLevel, newLevel }) => {
             {/* render next level button when both answers are correct */}
             {
                 inputOneCorrect ? 
-                <button 
-                className='level__next-button' 
-                onClick={() => {
-                    clearInput(); setInputOneCorrect(false); newLevel((currentLevel.id + 1));
-                }}>
-                    Next
-                </button> 
+                // <button 
+                // className='level__next-button' 
+                // onClick={() => {
+                //     clearInput(); setInputOneCorrect(false); newLevel((currentLevel.id + 1));
+                // }}>
+                //     Next
+                // </button> 
+                <p className='level__instructions'>Thanks for playing! More levels coming soon.</p>
                 : null
             }
         </section>

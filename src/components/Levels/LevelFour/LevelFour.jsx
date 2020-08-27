@@ -29,7 +29,7 @@ const LevelFour = ({ currentLevel, newLevel }) => {
     const checkAnswer = (input) => {
         // remove spaces from user input
         const alteredInput = input.split(' ').join('');
-        // slice()
+        // slice
         if (alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
             sliceArray(setNewMantaImgs);
@@ -65,7 +65,7 @@ const LevelFour = ({ currentLevel, newLevel }) => {
             <div className='level__input-container'>
                 <p className='level__code'>let newMantArray = mantArray.</p>
                 <input className='level__code level__code--input' ref={answerOne} placeholder={`type answer here`} onChange={(e) => setInputOne(e.target.value)}></input>
-                <span className='level__code'>;</span>
+                <span className='level__code'>();</span>
             </div>
                 <p className='level__code'>
                     newMantArray = [

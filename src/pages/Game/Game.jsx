@@ -36,7 +36,7 @@ class Game extends React.Component {
             description: 'The .slice(x,y) method makes a copy of the array starting with index x (optional) and up to, but not including, index y (optional). If x is not specified, index 0 is the default. If y is not specified, the method will copy to the last index of the array. This method returns the copied items and does NOT alter the original array.', 
             questionOne: `The gang's all here! Let's add more rays to this party started by creating a copy mantArray.`,
             questionTwo: 'Turns out Yellow, Green and Blue Rays are the life of the party. Make another copy of them!',
-            answerOne: 'slice()',
+            answerOne: 'slice',
             answerTwo: 'slice(2,5)'
         },
         5: {
