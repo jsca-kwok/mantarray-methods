@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Visual.scss';
 import redRay from '../../assets/images/red-ray.png';
 import orangeRay from '../../assets/images/orange-ray.png';
@@ -13,6 +13,16 @@ const Visual = ({ currentLevel, newLevel }) => {
     const [inputTwo, setInputTwo] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
     const [inputTwoCorrect, setInputTwoCorrect] = useState(false);
+
+    // refs to user inputs
+    const answerOne = useRef();
+    const answerTwo = useRef();
+
+    // clear user inputs when level is complete
+    const clearInput = () => {
+        answerOne.current.value = '';
+        answerTwo.current.value = '';
+    }
 
     const checkAnswer = (input) => {
         // push
@@ -80,7 +90,7 @@ const Visual = ({ currentLevel, newLevel }) => {
             {/* input for question one */}
             <div className='visual__input-container'>
                 <span className='visual__code'>mantArray.</span>
-                <input className='visual__code visual__code--input' placeholder={`type method here`} onChange={(e) => setInputOne(e.target.value)}></input>
+                <input className='visual__code visual__code--input' ref={answerOne} placeholder={`type method here`} onChange={(e) => setInputOne(e.target.value)}></input>
                 <span className='visual__code'>(</span>
                 <img className='visual__manta-ray' src={purpleRay} alt='manta ray' />
                 <span className='visual__code'>);</span>
@@ -95,7 +105,7 @@ const Visual = ({ currentLevel, newLevel }) => {
                 <p className='visual__instructions'>{currentLevel.questionTwo}</p>
                 <div className='visual__input-container'>
                     <span className='visual__code'>mantArray.</span>
-                    <input className='visual__code visual__code--input' placeholder={`type method here`} onChange={(e) => setInputTwo(e.target.value)}></input>
+                    <input className='visual__code visual__code--input' ref={answerTwo} placeholder={`type method here`} onChange={(e) => setInputTwo(e.target.value)}></input>
                     <span className='visual__code'>();</span>
                     <button className='visual__input-button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>
@@ -106,7 +116,13 @@ const Visual = ({ currentLevel, newLevel }) => {
             {/* render next level button when both answers are correct */}
             {
                 inputOneCorrect && inputTwoCorrect ? 
-                <button className='visual__next-button' onClick={() => newLevel((currentLevel.id + 1))}>Next</button> 
+                <button 
+                className='visual__next-button' 
+                onClick={() => {
+                    clearInput(); setInputOneCorrect(false); setInputTwoCorrect(false); newLevel((currentLevel.id + 1));
+                }}>
+                    Next
+                </button> 
                 : null
             }
         </section>
