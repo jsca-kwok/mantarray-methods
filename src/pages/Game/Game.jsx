@@ -38,6 +38,14 @@ class Game extends React.Component {
             questionTwo: 'Turns out Yellow, Green and Blue Rays are the life of the party. Make another copy of them!',
             answerOne: 'slice()',
             answerTwo: 'slice(2,5)'
+        },
+        5: {
+            id: 5,
+            description: 'The .reverse() method reverses the order of the array items and returns the reversed array. This method alters the original array.', 
+            questionOne: `Purple Ray is sick and tired of being last all the time. Reverse the array so he ends up in front.`,
+            questionTwo: null,
+            answerOne: 'reverse',
+            answerTwo: null
         }
     };
 

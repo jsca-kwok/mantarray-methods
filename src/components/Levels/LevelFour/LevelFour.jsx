@@ -29,7 +29,6 @@ const LevelFour = ({ currentLevel, newLevel }) => {
     const checkAnswer = (input) => {
         // remove spaces from user input
         const alteredInput = input.split(' ').join('');
-        console.log(alteredInput);
         // slice()
         if (alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);

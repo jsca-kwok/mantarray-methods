@@ -4,6 +4,7 @@ import LevelOne from '../Levels/LevelOne/LevelOne';
 import LevelTwo from '../Levels/LevelTwo/LevelTwo';
 import LevelThree from '../Levels/LevelThree/LevelThree';
 import LevelFour from '../Levels/LevelFour/LevelFour';
+import LevelFive from '../Levels/LevelFive/LevelFive';
 
 const Visual = ({ currentLevel, newLevel }) => {
     return (
@@ -19,6 +20,9 @@ const Visual = ({ currentLevel, newLevel }) => {
             }
             {
                 currentLevel.id === 4 ? <LevelFour currentLevel={currentLevel} newLevel={newLevel} /> : null
+            }
+            {
+                currentLevel.id === 5 ? <LevelFive currentLevel={currentLevel} newLevel={newLevel} /> : null
             }
         </section>
     );
