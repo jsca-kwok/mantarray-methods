@@ -2,70 +2,13 @@
 
 .visual {
     background-color: $secondaryBackgroundColor;
-    width: 100vw;
+    width: 100%;
     height: 60vh;
-    padding: 1.8%;
+    padding: 2%;
     overflow: scroll;
     @include tablet {
         width: 60vw;
         height: 90vh;
         border-top-left-radius: 15px;
-    }
-    &__instructions {
-        font-weight: 500;
-        font-size: 1.4rem;
-        line-height: 1.6;
-    }
-    &__code {
-        @include codeFont;
-        &--input {
-            font-size: 1.6rem;
-            height: 40px;
-            border-radius: 5px;
-            border: none;
-        }
-    }
-    &__manta-ray {
-        width: 9%;
-        vertical-align: middle;
-        animation: fadeIn 2s;
-    }
-    &__input-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: $specialBackgroundColor;
-        padding: 1.8%;
-        border-radius: 10px;
-        box-shadow: 2px 2px 7px rgba(0,0,0,0.3);
-    }
-    &__input-button {
-        &--mobile {
-            @include buttonStyle;
-            width: 75px;
-            margin-top: 30px;
-            @include desktop {
-                display: none;
-            }
-        }
-        &--tablet {
-        display: none;
-            @include desktop {
-                display: initial;
-                @include buttonStyle;
-                margin: 10px 0 10px 50px;
-                width: 75px;
-            }
-        }
-    }
-    &__next-button {
-        @include buttonStyle;
-        border: 3px dashed black;
-        margin: 40px 0;
-        width: 100px;
-        display: block;
-        @include desktop {
-            margin-left: auto;
-        }
     }
 }
