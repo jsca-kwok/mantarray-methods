@@ -26,27 +26,15 @@ const LevelTwo = ({ currentLevel, newLevel }) => {
 
     const checkAnswer = (input) => {
         // shift
-        if (input === inputOne && input === currentLevel.answerOne) {
+        if (input === currentLevel.answerOne) {
             setInputOneCorrect(true);
             shiftArray();
         };
         // unshift
-        if (input === inputTwo && input === currentLevel.answerTwo) {
+        if (input === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             unshiftArray();
         };
-    }
-
-    const pushArray = () => {
-        const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.push(purpleRay);
-        setMantaImgs(mantaImgsCopy);
-    }
-
-    const popArray = () => {
-        const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.pop();
-        setMantaImgs(mantaImgsCopy);
     }
 
     const shiftArray = () => {

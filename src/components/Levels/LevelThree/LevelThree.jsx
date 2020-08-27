@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
-import './LevelOne.scss';
+import './LevelThree.scss';
 import redRay from '../../../assets/images/red-ray.png';
 import orangeRay from '../../../assets/images/orange-ray.png';
 import yellowRay from '../../../assets/images/yellow-ray.png';
 import greenRay from '../../../assets/images/green-ray.png';
 import blueRay from '../../../assets/images/blue-ray.png';
-import purpleRay from '../../../assets/images/purple-ray.png';
 
-const LevelOne = ({ currentLevel, newLevel }) => {
+const LevelThree = ({ currentLevel, newLevel }) => {
     const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay]);
     const [inputOne, setInputOne] = useState(null);
     const [inputTwo, setInputTwo] = useState(null);
@@ -25,27 +24,24 @@ const LevelOne = ({ currentLevel, newLevel }) => {
     }
 
     const checkAnswer = (input) => {
-        // push
-        if (input === currentLevel.answerOne) {
+        // remove spaces from user input
+        const alteredInput = input.split(' ').join('');
+        console.log(alteredInput);
+        // splice(1,1)
+        if (alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
-            pushArray();
+            spliceArray(1,1);
         };
-        // pop
-        if (input === currentLevel.answerTwo) {
+        // splice(0)
+        if (alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
-            popArray();
+            spliceArray(0);
         };
     }
 
-    const pushArray = () => {
+    const spliceArray = (x,y = mantaImgs.length) => {
         const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.push(purpleRay);
-        setMantaImgs(mantaImgsCopy);
-    }
-
-    const popArray = () => {
-        const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.pop();
+        mantaImgsCopy.splice(x,y);
         setMantaImgs(mantaImgsCopy);
     }
 
@@ -68,10 +64,8 @@ const LevelOne = ({ currentLevel, newLevel }) => {
             {/* input for question one */}
             <div className='level__input-container'>
                 <span className='level__code'>mantArray.</span>
-                <input className='level__code level__code--input' ref={answerOne} placeholder={`type method here`} onChange={(e) => setInputOne(e.target.value)}></input>
-                <span className='level__code'>(</span>
-                <img className='level__manta-ray' src={purpleRay} alt='manta ray' />
-                <span className='level__code'>);</span>
+                <input className='level__code level__code--input' ref={answerOne} placeholder={`type answer here`} onChange={(e) => setInputOne(e.target.value)}></input>
+                <span className='level__code'>;</span>
                 <button className='level__input-button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
             </div>
             <button className='level__input-button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
@@ -83,8 +77,8 @@ const LevelOne = ({ currentLevel, newLevel }) => {
                 <p className='level__instructions'>{currentLevel.questionTwo}</p>
                 <div className='level__input-container'>
                     <span className='level__code'>mantArray.</span>
-                    <input className='level__code level__code--input' ref={answerTwo} placeholder={`type method here`} onChange={(e) => setInputTwo(e.target.value)}></input>
-                    <span className='level__code'>();</span>
+                    <input className='level__code level__code--input' ref={answerTwo} placeholder={`type answer here`} onChange={(e) => setInputTwo(e.target.value)}></input>
+                    <span className='level__code'>;</span>
                     <button className='level__input-button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>
                 <button className='level__input-button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
@@ -107,4 +101,4 @@ const LevelOne = ({ currentLevel, newLevel }) => {
     );
 }
 
-export default LevelOne;
+export default LevelThree;

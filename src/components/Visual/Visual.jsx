@@ -2,6 +2,7 @@ import React from 'react';
 import './Visual.scss';
 import LevelOne from '../Levels/LevelOne/LevelOne';
 import LevelTwo from '../Levels/LevelTwo/LevelTwo';
+import LevelThree from '../Levels/LevelThree/LevelThree';
 
 const Visual = ({ currentLevel, newLevel }) => {
     return (
@@ -11,6 +12,9 @@ const Visual = ({ currentLevel, newLevel }) => {
             }
             {
                 currentLevel.id === 2 ? <LevelTwo currentLevel={currentLevel} newLevel={newLevel} /> : null
+            }
+            {
+                currentLevel.id === 3 ? <LevelThree currentLevel={currentLevel} newLevel={newLevel} /> : null
             }
         </section>
     );
