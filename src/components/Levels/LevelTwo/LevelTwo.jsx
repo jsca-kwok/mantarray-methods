@@ -29,9 +29,8 @@ const LevelTwo = ({ currentLevel, newLevel }) => {
         if (input === currentLevel.answerOne) {
             setInputOneCorrect(true);
             shiftArray();
-        };
-        // unshift
-        if (input === currentLevel.answerTwo) {
+            // unshift
+        } else if (input === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             unshiftArray();
         };

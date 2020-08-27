@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
-import './LevelThree.scss';
+import './LevelFour.scss';
 import redRay from '../../../assets/images/red-ray.png';
 import orangeRay from '../../../assets/images/orange-ray.png';
 import yellowRay from '../../../assets/images/yellow-ray.png';
 import greenRay from '../../../assets/images/green-ray.png';
 import blueRay from '../../../assets/images/blue-ray.png';
+import purpleRay from '../../../assets/images/purple-ray.png';
 
-const LevelThree = ({ currentLevel, newLevel }) => {
-    const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay]);
+const LevelFour = ({ currentLevel, newLevel }) => {
+    const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay, purpleRay]);
+    const [newMantaImgs, setNewMantaImgs] = useState([]);
+    const [moreMantaImgs, setMoreMantaImgs] = useState([]);
     const [inputOne, setInputOne] = useState(null);
     const [inputTwo, setInputTwo] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
@@ -27,21 +30,20 @@ const LevelThree = ({ currentLevel, newLevel }) => {
         // remove spaces from user input
         const alteredInput = input.split(' ').join('');
         console.log(alteredInput);
-        // splice(1,1)
+        // slice()
         if (alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
-            spliceArray(1,1);
-            // splice(0)
+            sliceArray(setNewMantaImgs);
+        // slice
         } else if (alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
-            spliceArray(0);
+            sliceArray(setMoreMantaImgs, 2, 5);
         };
     }
 
-    const spliceArray = (x,y = mantaImgs.length) => {
-        const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.splice(x,y);
-        setMantaImgs(mantaImgsCopy);
+    const sliceArray = (callback, x = 0, y = mantaImgs.length + 1) => {
+        const newMantaImgs = mantaImgs.slice(x,y);
+        callback(newMantaImgs);
     }
 
     return (
@@ -62,12 +64,24 @@ const LevelThree = ({ currentLevel, newLevel }) => {
             </p>
             {/* input for question one */}
             <div className='level__input-container'>
-                <span className='level__code'>mantArray.</span>
+                <p className='level__code'>let newMantArray = mantArray.</p>
                 <input className='level__code level__code--input' ref={answerOne} placeholder={`type answer here`} onChange={(e) => setInputOne(e.target.value)}></input>
                 <span className='level__code'>;</span>
-                <button className='level__input-button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
             </div>
-            <button className='level__input-button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
+                <p className='level__code'>
+                    newMantArray = [
+                    {
+                        newMantaImgs.map((img, index) => {
+                            // conditional ensures no additional comma on the last item
+                            return index < newMantaImgs.length - 1 ?
+                            <><img className='level__manta-ray' src={img} alt='manta ray'/><span>,</span></>
+                            : <><img className='level__manta-ray' src={img} alt='manta ray'/></>
+                        })
+                    }
+                    ];
+                </p>
+                <button className='level__button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
+                <button className='level__button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
 
             {/* input for question two appears only if question one is correct */}
             {
@@ -75,12 +89,25 @@ const LevelThree = ({ currentLevel, newLevel }) => {
                 <> 
                 <p className='level__instructions'>{currentLevel.questionTwo}</p>
                 <div className='level__input-container'>
-                    <span className='level__code'>mantArray.</span>
+                    <p className='level__code'>let moreMantArray = mantArray.</p>
                     <input className='level__code level__code--input' ref={answerTwo} placeholder={`type answer here`} onChange={(e) => setInputTwo(e.target.value)}></input>
                     <span className='level__code'>;</span>
-                    <button className='level__input-button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
+                    <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>
-                <button className='level__input-button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
+                <p className='level__code'>
+                    moreMantArray = [
+                    {
+                        moreMantaImgs.map((img, index) => {
+                            // conditional ensures no additional comma on the last item
+                            return index < moreMantaImgs.length - 1 ?
+                            <><img className='level__manta-ray' src={img} alt='manta ray'/><span>,</span></>
+                            : <><img className='level__manta-ray' src={img} alt='manta ray'/></>
+                        })
+                    }
+                    ];
+                </p>
+                <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
+                <button className='level__button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </>
                 : null
             }
@@ -100,4 +127,4 @@ const LevelThree = ({ currentLevel, newLevel }) => {
     );
 }
 
-export default LevelThree;
+export default LevelFour;

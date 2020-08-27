@@ -29,9 +29,8 @@ const LevelOne = ({ currentLevel, newLevel }) => {
         if (input === currentLevel.answerOne) {
             setInputOneCorrect(true);
             pushArray();
-        };
         // pop
-        if (input === currentLevel.answerTwo) {
+        } else if (input === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             popArray();
         };

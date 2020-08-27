@@ -1,0 +1,15 @@
+@import '../LevelOne/LevelOne.scss';
+
+.level {
+    &__code--input {
+        width: 40%;
+    }
+    &__button--mobile {
+        @extend .level__input-button--mobile;
+        margin-top: 0
+    }
+    &__button--tablet {
+        @extend .level__input-button--tablet;
+        margin-top: 0;
+    }
+}
