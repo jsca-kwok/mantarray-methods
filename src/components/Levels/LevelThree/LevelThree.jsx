@@ -37,6 +37,14 @@ const LevelThree = ({ currentLevel, newLevel }) => {
         };
     }
 
+    // allows answer to be submitted with return key
+    const keyPressHandler = (e, input) => {
+        if (e.key !== 'Enter') {
+            return;
+        }
+        checkAnswer(input);
+    }
+
     const spliceArray = (x,y = mantaImgs.length) => {
         const mantaImgsCopy = mantaImgs.slice();
         mantaImgsCopy.splice(x,y);
@@ -62,7 +70,13 @@ const LevelThree = ({ currentLevel, newLevel }) => {
             {/* input for question one */}
             <div className='level__input-container'>
                 <span className='level__code'>mantArray.</span>
-                <input className='level__code level__code--input' ref={answerOne} placeholder={`type answer here`} onChange={(e) => setInputOne(e.target.value)}></input>
+                <input 
+                    className='level__code level__code--input' 
+                    ref={answerOne} 
+                    placeholder={`type answer here`} 
+                    onChange={(e) => setInputOne(e.target.value)}
+                    onKeyPress={(e) => keyPressHandler(e, inputOne)}>
+                </input>
                 <span className='level__code'>;</span>
                 <button className='level__input-button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
             </div>
@@ -75,7 +89,12 @@ const LevelThree = ({ currentLevel, newLevel }) => {
                 <p className='level__instructions'>{currentLevel.questionTwo}</p>
                 <div className='level__input-container'>
                     <span className='level__code'>mantArray.</span>
-                    <input className='level__code level__code--input' ref={answerTwo} placeholder={`type answer here`} onChange={(e) => setInputTwo(e.target.value)}></input>
+                    <input 
+                        className='level__code level__code--input' 
+                        ref={answerTwo} placeholder={`type answer here`} 
+                        onChange={(e) => setInputTwo(e.target.value)}
+                        onKeyPress={(e) => keyPressHandler(e, inputTwo)}>
+                    </input>
                     <span className='level__code'>;</span>
                     <button className='level__input-button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>

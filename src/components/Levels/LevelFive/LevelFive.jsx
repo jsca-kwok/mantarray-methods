@@ -28,6 +28,14 @@ const LevelFive = ({ currentLevel, newLevel }) => {
         }
     }
 
+    // allows answer to be submitted with return key
+    const keyPressHandler = (e, input) => {
+        if (e.key !== 'Enter') {
+            return;
+        }
+        checkAnswer(input);
+    }
+
     const reverseArray = () => {
         const mantaImgsCopy = mantaImgs.slice();
         mantaImgsCopy.reverse();
@@ -53,7 +61,13 @@ const LevelFive = ({ currentLevel, newLevel }) => {
             {/* input for question one */}
             <div className='level__input-container'>
                 <span className='level__code'>mantArray.</span>
-                <input className='level__code level__code--input' ref={answerOne} placeholder={`type method here`} onChange={(e) => setInputOne(e.target.value)}></input>
+                <input 
+                    className='level__code level__code--input' 
+                    ref={answerOne} 
+                    placeholder={`type method here`} 
+                    onChange={(e) => setInputOne(e.target.value)}
+                    onKeyPress={(e) => keyPressHandler(e, inputOne)}>
+                </input>
                 <span className='level__code'>(</span>
                 <span className='level__code'>);</span>
                 <button className='level__input-button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
