@@ -9,6 +9,7 @@ import purpleRay from '../../../assets/images/purple-ray.png';
 
 const LevelFour = ({ currentLevel, newLevel }) => {
     const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay, purpleRay]);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
     const [newMantaImgs, setNewMantaImgs] = useState([]);
     const [moreMantaImgs, setMoreMantaImgs] = useState([]);
     const [inputOne, setInputOne] = useState(null);
@@ -30,13 +31,20 @@ const LevelFour = ({ currentLevel, newLevel }) => {
         // remove spaces from user input
         const alteredInput = input.split(' ').join('');
         // slice
-        if (alteredInput === currentLevel.answerOne) {
+        if (currentQuestion === 1 && alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
+            setCurrentQuestion(2);
             sliceArray(setNewMantaImgs);
+        } else if (currentQuestion === 1) {
+            answerOne.current.value = '';
+            answerOne.current.placeholder = 'try again';
         // slice
         } else if (alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             sliceArray(setMoreMantaImgs, 2, 5);
+        } else {
+            answerTwo.current.value = '';
+            answerTwo.current.placeholder = 'try again';
         };
     }
 

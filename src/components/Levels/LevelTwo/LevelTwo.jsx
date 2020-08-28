@@ -9,6 +9,7 @@ import purpleRay from '../../../assets/images/purple-ray.png';
 
 const LevelTwo = ({ currentLevel, newLevel }) => {
     const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay]);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
     const [inputOne, setInputOne] = useState(null);
     const [inputTwo, setInputTwo] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
@@ -26,13 +27,20 @@ const LevelTwo = ({ currentLevel, newLevel }) => {
 
     const checkAnswer = (input) => {
         // shift
-        if (input === currentLevel.answerOne) {
+        if (currentQuestion === 1 && input === currentLevel.answerOne) {
             setInputOneCorrect(true);
+            setCurrentQuestion(2);
             shiftArray();
             // unshift
+        } else if (currentQuestion === 1) {
+            answerOne.current.value = '';
+            answerOne.current.placeholder = 'try again';
         } else if (input === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             unshiftArray();
+        } else {
+            answerTwo.current.value = '';
+            answerTwo.current.placeholder = 'try again';
         };
     }
 

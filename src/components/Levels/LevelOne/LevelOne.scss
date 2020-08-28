@@ -20,7 +20,7 @@
     &__manta-ray {
         width: 9%;
         vertical-align: middle;
-        animation: fadeIn 2s;
+        animation: fadeIn 3s;
     }
     &__input-container {
         display: flex;
@@ -30,6 +30,12 @@
         padding: 1.8%;
         border-radius: 10px;
         box-shadow: 2px 2px 7px rgba(0,0,0,0.3);
+        &--incorrect {
+            background: $incorrectInputColor;
+        }
+        &--correct {
+            background: $incorrectInputColor;
+        }
     }
     &__input-button {
         &--mobile {

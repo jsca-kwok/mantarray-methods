@@ -8,6 +8,7 @@ import blueRay from '../../../assets/images/blue-ray.png';
 
 const LevelThree = ({ currentLevel, newLevel }) => {
     const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay]);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
     const [inputOne, setInputOne] = useState(null);
     const [inputTwo, setInputTwo] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
@@ -27,13 +28,20 @@ const LevelThree = ({ currentLevel, newLevel }) => {
         // remove spaces from user input
         const alteredInput = input.split(' ').join('');
         // splice(1,1)
-        if (alteredInput === currentLevel.answerOne) {
+        if (currentQuestion === 1 && alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
+            setCurrentQuestion(2);
             spliceArray(1,1);
+        } else if (currentQuestion === 1 ) {
+            answerOne.current.value = '';
+            answerOne.current.placeholder = 'try again';
             // splice(0)
         } else if (alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             spliceArray(0);
+        } else {
+            answerTwo.current.value = '';
+            answerTwo.current.placeholder = 'try again';
         };
     }
 

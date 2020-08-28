@@ -8,7 +8,7 @@ import blueRay from '../../../assets/images/blue-ray.png';
 import purpleRay from '../../../assets/images/purple-ray.png';
 
 const LevelFive = ({ currentLevel, newLevel }) => {
-    const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay]);
+    const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay, purpleRay]);
     const [inputOne, setInputOne] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
 
@@ -25,7 +25,10 @@ const LevelFive = ({ currentLevel, newLevel }) => {
         if (input === currentLevel.answerOne) {
             setInputOneCorrect(true);
             reverseArray();
-        }
+        } else {
+            answerOne.current.value = '';
+            answerOne.current.placeholder = 'try again';
+        };
     }
 
     // allows answer to be submitted with return key
