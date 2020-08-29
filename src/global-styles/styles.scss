@@ -7,3 +7,11 @@ body {
     background-color: $mainBackgroundColor;
     font-family: 'Poppins';
 }
+
+input {
+    outline: none;
+}
+
+select {
+    outline: none;
+}
