@@ -39,7 +39,7 @@ const LevelFour = ({ currentLevel, newLevel }) => {
             answerOne.current.value = '';
             answerOne.current.placeholder = 'try again';
         // slice
-        } else if (alteredInput === currentLevel.answerTwo) {
+        } else if (currentQuestion === 2 && alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             sliceArray(setMoreMantaImgs, 2, 5);
         } else {

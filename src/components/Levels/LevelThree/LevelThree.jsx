@@ -36,7 +36,7 @@ const LevelThree = ({ currentLevel, newLevel }) => {
             answerOne.current.value = '';
             answerOne.current.placeholder = 'try again';
             // splice(0)
-        } else if (alteredInput === currentLevel.answerTwo) {
+        } else if (currentQuestion === 2 && alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             spliceArray(0);
         } else {

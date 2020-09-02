@@ -49,11 +49,11 @@ class Game extends React.Component {
         },
         6: {
             id: 6,
-            description: 'The .map() method performs a function on each item and returns a new array with the results. \n\n This method does not alter the original array.', 
+            description: 'The .map(item => callback) method performs a callback function on each item and returns a new array with the results. \n\n This method does not alter the original array. \n\n The .forEach(item => callback) method performs a callback function on each item in the array but does NOT return anything.', 
             questionOne: `Yee-haw! It's time for a rodeo party. Give cowboy hats to all the Rays.`,
-            questionTwo: null,
+            questionTwo: `What kind of rodeo has no dancing? Let's start a line dance!`,
             answerOne: 'map',
-            answerTwo: null
+            answerTwo: 'forEach'
         }
     };
 

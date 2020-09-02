@@ -35,7 +35,7 @@ const LevelTwo = ({ currentLevel, newLevel }) => {
         } else if (currentQuestion === 1) {
             answerOne.current.value = '';
             answerOne.current.placeholder = 'try again';
-        } else if (input === currentLevel.answerTwo) {
+        } else if (currentQuestion === 2 && input === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
             unshiftArray();
         } else {
