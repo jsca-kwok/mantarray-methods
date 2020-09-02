@@ -1,34 +1,41 @@
 import React, { useState, useRef } from 'react';
-import './LevelFive.scss';
+import './LevelSix.scss';
 import redRay from '../../../assets/images/red-ray.png';
 import orangeRay from '../../../assets/images/orange-ray.png';
 import yellowRay from '../../../assets/images/yellow-ray.png';
 import greenRay from '../../../assets/images/green-ray.png';
 import blueRay from '../../../assets/images/blue-ray.png';
 import purpleRay from '../../../assets/images/purple-ray.png';
+import greyRay from '../../../assets/images/grey-ray.png';
+import hat from '../../../assets/images/hat.png';
 
-const LevelFive = ({ currentLevel, newLevel }) => {
+const LevelSix = ({ currentLevel, newLevel }) => {
     const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay, purpleRay]);
+    const [currentQuestion, setCurrentQuestion] = useState(1);
+    const [cowboyImgs, setCowboyImgs] = useState([]);
     const [inputOne, setInputOne] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
 
     // refs to user inputs
     const answerOne = useRef();
+    const answerTwo = useRef();
 
     // clear user inputs when level is complete
     const clearInput = () => {
         answerOne.current.value = '';
+        answerTwo.current.value = '';
     }
 
     const checkAnswer = (input) => {
-        // reverse
-        if (input === currentLevel.answerOne) {
+        // remove spaces from user input
+        const alteredInput = input.split(' ').join('');
+        if (currentQuestion === 1 && alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
-            reverseArray();
+            mapArray();
         } else {
             answerOne.current.value = '';
             answerOne.current.placeholder = 'try again';
-        };
+        } 
     }
 
     // allows answer to be submitted with return key
@@ -39,10 +46,10 @@ const LevelFive = ({ currentLevel, newLevel }) => {
         checkAnswer(input);
     }
 
-    const reverseArray = () => {
-        const mantaImgsCopy = mantaImgs.slice();
-        mantaImgsCopy.reverse();
-        setMantaImgs(mantaImgsCopy);
+    const mapArray = () => {
+        let cowboyArray = [];
+        mantaImgs.map(img => cowboyArray.push(img));
+        setCowboyImgs(cowboyArray);
     }
 
     return (
@@ -63,20 +70,35 @@ const LevelFive = ({ currentLevel, newLevel }) => {
             </p>
             {/* input for question one */}
             <div className='level__input-container'>
-                <span className='level__code'>mantArray.</span>
+                <p className='level__code'>let cowboys = mantArray.</p>
                 <input 
                     className='level__code level__code--input' 
                     ref={answerOne} 
-                    placeholder={`type method here`} 
+                    placeholder={`type answer here`} 
                     onChange={(e) => setInputOne(e.target.value)}
                     onKeyPress={(e) => keyPressHandler(e, inputOne)}>
                 </input>
                 <span className='level__code'>(</span>
-                <span className='level__code'>);</span>
-                <button className='level__input-button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
+                <img className='level__manta-ray' src={greyRay} alt='each ray' />
+                <span className='level__code'>=&gt; + </span>
+                <img className='level__hat' src={hat} alt='hat' />
+                <span>);</span>
             </div>
-            <button className='level__input-button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
-            {/* render next level button when both answers are correct */}
+                <p className='level__code'>
+                    cowboys = [
+                    {
+                        cowboyImgs.map((img, index) => {
+                            // conditional ensures no additional comma on the last item
+                            return index < cowboyImgs.length - 1 ?
+                            <><img className='level__manta-ray' src={img} alt='manta ray'/><span>,</span></>
+                            : <><img className='level__manta-ray' src={img} alt='manta ray'/></>
+                        })
+                    }
+                    ];
+                </p>
+                <button className='level__button--tablet' onClick={() => checkAnswer(inputOne)}>Go!</button>
+                <button className='level__button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
+            {/* render next level button when answer is correct */}
             {
                 inputOneCorrect ? 
                 <button 
@@ -86,11 +108,10 @@ const LevelFive = ({ currentLevel, newLevel }) => {
                 }}>
                     Next
                 </button> 
-                // <p className='level__instructions'>Thanks for playing! More levels coming soon.</p>
                 : null
             }
         </section>
     );
 }
 
-export default LevelFive;
+export default LevelSix;

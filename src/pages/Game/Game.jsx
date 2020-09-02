@@ -46,6 +46,14 @@ class Game extends React.Component {
             questionTwo: null,
             answerOne: 'reverse',
             answerTwo: null
+        },
+        6: {
+            id: 6,
+            description: 'The .map() method performs a function on each item and returns a new array with the results. \n\n This method does not alter the original array.', 
+            questionOne: `Yee-haw! It's time for a rodeo party. Give cowboy hats to all the Rays.`,
+            questionTwo: null,
+            answerOne: 'map',
+            answerTwo: null
         }
     };
 
