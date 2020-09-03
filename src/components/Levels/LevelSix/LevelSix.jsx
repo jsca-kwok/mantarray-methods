@@ -136,16 +136,11 @@ const LevelSix = ({ currentLevel, newLevel }) => {
                     <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>
                 <p className='level__code'>
-                    cowboys = [
                     {
-                        cowboyImgs.map((img, index) => {
-                            // conditional ensures no additional comma on the last item
-                            return index < cowboyImgs.length - 1 ?
-                            <><img className={inputTwoCorrect ? 'level__manta-ray-hat level__manta-ray-hat--dance': 'level__manta-ray-hat'} src={img} alt='manta ray'/><span>,</span></>
-                            : <><img className={inputTwoCorrect ? 'level__manta-ray-hat level__manta-ray-hat--dance': 'level__manta-ray-hat'} src={img} alt='manta ray'/></>
+                        cowboyImgs.map(img => {
+                            return <img className={inputTwoCorrect ? 'level__manta-ray-hat level__manta-ray-hat--dance': 'level__manta-ray-hat'} src={img} alt='manta ray'/>
                         })
                     }
-                    ];
                 </p>
                 <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 <button className='level__button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
@@ -155,14 +150,15 @@ const LevelSix = ({ currentLevel, newLevel }) => {
             {/* render next level button when both answers are correct */}
             {
                 inputOneCorrect && inputTwoCorrect ? 
-                <button 
-                className='level__next-button' 
-                onClick={() => {
-                    clearInput(); setInputOneCorrect(false); setInputTwoCorrect(false); newLevel((currentLevel.id + 1));
-                }}>
-                    Next
-                </button> 
-                : null
+                // <button 
+                // className='level__next-button' 
+                // onClick={() => {
+                //     clearInput(); setInputOneCorrect(false); setInputTwoCorrect(false); newLevel((currentLevel.id + 1));
+                // }}>
+                //     Next
+                // </button> 
+                // : null
+                <p className='level__code'>Thanks for playing! More levels coming soon.</p> : null
             }
         </section>
     );

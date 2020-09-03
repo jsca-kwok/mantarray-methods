@@ -116,7 +116,7 @@ const LevelFour = ({ currentLevel, newLevel }) => {
                         ref={answerTwo} 
                         placeholder={`type answer here`} 
                         onChange={(e) => setInputTwo(e.target.value)}
-                        onKeyPress={(e) => keyPressHandler(e, inputOne)}>
+                        onKeyPress={(e) => keyPressHandler(e, inputTwo)}>
                     </input>
                     <span className='level__code'>;</span>
                     <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>

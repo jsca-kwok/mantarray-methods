@@ -49,11 +49,19 @@ class Game extends React.Component {
         },
         6: {
             id: 6,
-            description: 'The .map(item => callback) method performs a callback function on each item and returns a new array with the results. \n\n This method does not alter the original array. \n\n The .forEach(item => callback) method performs a callback function on each item in the array but does NOT return anything.', 
+            description: 'The .map(item => callback) method performs a callback function on each item and returns a new array with the results. \n\n The .forEach(item => callback) method performs a callback function on each item in the array but does NOT return anything. \n\n Both these methods do not alter the original array. The difference is the return value of the method.', 
             questionOne: `Yee-haw! It's time for a rodeo party. Give cowboy hats to all the Rays.`,
             questionTwo: `What kind of rodeo has no dancing? Let's start a line dance!`,
             answerOne: 'map',
             answerTwo: 'forEach'
+        },
+        7: {
+            id: 7,
+            description: 'The .filter(item => callback) method performs a callback function to test each item in the array and returns a new array with the items that pass the test. \n\n The .find(item => callback) method performs a callback function test each item in the array and returns the value of the first passing item. \n\n Both these methods do not alter the original array.', 
+            questionOne: `The Red Rays caused chaos at the rodeo party. Single out the first Red Ray to take him in for questioning.`,
+            questionTwo: `Red Ray admits that he and his friends were the troublemakers. Bring in all the Red Rays.`,
+            answerOne: 'find',
+            answerTwo: 'filter'
         }
     };
 
