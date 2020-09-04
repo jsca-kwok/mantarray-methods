@@ -11,22 +11,22 @@ const Visual = ({ currentLevel, newLevel }) => {
     return (
         <section className='visual'>
             {
-                currentLevel.id === 1 ? <LevelOne currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 1 && <LevelOne currentLevel={currentLevel} newLevel={newLevel} />
             }
             {
-                currentLevel.id === 2 ? <LevelTwo currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 2 && <LevelTwo currentLevel={currentLevel} newLevel={newLevel} />
             }
             {
-                currentLevel.id === 3 ? <LevelThree currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 3 && <LevelThree currentLevel={currentLevel} newLevel={newLevel} />
             }
             {
-                currentLevel.id === 4 ? <LevelFour currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 4 && <LevelFour currentLevel={currentLevel} newLevel={newLevel} />
             }
             {
-                currentLevel.id === 5 ? <LevelFive currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 5 && <LevelFive currentLevel={currentLevel} newLevel={newLevel} />
             }
             {
-                currentLevel.id === 6 ? <LevelSix currentLevel={currentLevel} newLevel={newLevel} /> : null
+                currentLevel.id === 6 && <LevelSix currentLevel={currentLevel} newLevel={newLevel} />
             }
         </section>
     );

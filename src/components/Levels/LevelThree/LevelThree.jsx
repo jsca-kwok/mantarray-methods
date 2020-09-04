@@ -92,7 +92,7 @@ const LevelThree = ({ currentLevel, newLevel }) => {
 
             {/* input for question two appears only if question one is correct */}
             {
-                inputOneCorrect ?
+                inputOneCorrect &&
                 <> 
                 <p className='level__instructions'>{currentLevel.questionTwo}</p>
                 <div className='level__input-container'>
@@ -108,11 +108,10 @@ const LevelThree = ({ currentLevel, newLevel }) => {
                 </div>
                 <button className='level__input-button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </>
-                : null
             }
             {/* render next level button when both answers are correct */}
             {
-                inputOneCorrect && inputTwoCorrect ? 
+                (inputOneCorrect && inputTwoCorrect) && 
                 <button 
                 className='level__next-button' 
                 onClick={() => {
@@ -120,7 +119,6 @@ const LevelThree = ({ currentLevel, newLevel }) => {
                 }}>
                     Next
                 </button> 
-                : null
             }
         </section>
     );

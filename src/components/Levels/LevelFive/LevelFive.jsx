@@ -78,7 +78,7 @@ const LevelFive = ({ currentLevel, newLevel }) => {
             <button className='level__input-button--mobile' onClick={() => checkAnswer(inputOne)}>Go!</button>
             {/* render next level button when both answers are correct */}
             {
-                inputOneCorrect ? 
+                inputOneCorrect && 
                 <button 
                 className='level__next-button' 
                 onClick={() => {
@@ -86,8 +86,6 @@ const LevelFive = ({ currentLevel, newLevel }) => {
                 }}>
                     Next
                 </button> 
-                // <p className='level__instructions'>Thanks for playing! More levels coming soon.</p>
-                : null
             }
         </section>
     );
