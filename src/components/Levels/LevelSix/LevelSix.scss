@@ -10,7 +10,7 @@
     }
     &__manta-ray-hat {
         @extend .level__manta-ray;
-        width: 60px;
+        width: 50px;
         &--dance {
             animation: dance 5s infinite alternate;
         }

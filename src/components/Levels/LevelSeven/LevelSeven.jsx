@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './LevelSix.scss';
+import './LevelSeven.scss';
 import redRay from '../../../assets/images/red-ray.png';
 import orangeRay from '../../../assets/images/orange-ray.png';
 import yellowRay from '../../../assets/images/yellow-ray.png';
@@ -16,11 +16,11 @@ import blueRayHat from '../../../assets/images/blue-ray-hat.png';
 import purpleRayHat from '../../../assets/images/purple-ray-hat.png';
 import greyRayHat from '../../../assets/images/grey-ray-hat.png';
 
-const LevelSix = ({ currentLevel, newLevel }) => {
-    const [mantaImgs, setMantaImgs] = useState([redRay, orangeRay, yellowRay, greenRay, blueRay, purpleRay]);
-    const [mantaHatImgs, setMantaHatImgs] = useState([redRayHat, orangeRayHat, yellowRayHat, greenRayHat, blueRayHat, purpleRayHat]);
+const LevelSeven = ({ currentLevel, newLevel }) => {
+    const [mantaHatImgs, setMantaHatImgs] = useState([redRayHat, orangeRayHat, redRayHat, redRayHat, blueRayHat, redRayHat]);
     const [currentQuestion, setCurrentQuestion] = useState(1);
-    const [cowboyImgs, setCowboyImgs] = useState([]);
+    const [suspect, setSuspect] = useState([]);
+    const [suspects, setSuspects] = useState([]);
     const [inputOne, setInputOne] = useState(null);
     const [inputTwo, setInputTwo] = useState(null);
     const [inputOneCorrect, setInputOneCorrect] = useState(false);
@@ -42,12 +42,13 @@ const LevelSix = ({ currentLevel, newLevel }) => {
         if (currentQuestion === 1 && alteredInput === currentLevel.answerOne) {
             setInputOneCorrect(true);
             setCurrentQuestion(2);
-            mapArray();
+            findArray();
         } else if (currentQuestion === 1) {
             answerOne.current.value = '';
             answerOne.current.placeholder = 'try again';
         } else if (currentQuestion === 2 && alteredInput === currentLevel.answerTwo) {
             setInputTwoCorrect(true);
+            filterArray();
         } else {
             answerTwo.current.value = '';
             answerTwo.current.placeholder = 'try again';
@@ -62,10 +63,14 @@ const LevelSix = ({ currentLevel, newLevel }) => {
         checkAnswer(input);
     }
 
-    const mapArray = () => {
-        let cowboyArray = [];
-        mantaHatImgs.map(img => cowboyArray.push(img));
-        setCowboyImgs(cowboyArray);
+    const findArray = () => {
+        const redRay = mantaHatImgs.slice(0,1);
+        setSuspect(redRay);
+    }
+
+    const filterArray = () => {
+        const allRedRays = [redRayHat, redRayHat, redRayHat, redRayHat];
+        setSuspects(allRedRays);
     }
 
     return (
@@ -75,9 +80,9 @@ const LevelSix = ({ currentLevel, newLevel }) => {
             <p className='level__code'> 
                 let mantArray = [
                 {
-                    mantaImgs.map((img, index) => {
+                    mantaHatImgs.map((img, index) => {
                         // conditional ensures no additional comma on the last item
-                        return index < mantaImgs.length - 1 ?
+                        return index < mantaHatImgs.length - 1 ?
                         <><img className='level__manta-ray' src={img} alt='manta ray'/><span>,</span></>
                         : <><img className='level__manta-ray' src={img} alt='manta ray'/></>
                     })
@@ -86,7 +91,7 @@ const LevelSix = ({ currentLevel, newLevel }) => {
             </p>
             {/* input for question one */}
             <div className='level__input-container'>
-                <p className='level__code'>let cowboys = mantArray.</p>
+                <p className='level__code'>let suspect = mantArray.</p>
                 <input 
                     className='level__code level__code--input' 
                     ref={answerOne} 
@@ -95,17 +100,19 @@ const LevelSix = ({ currentLevel, newLevel }) => {
                     onKeyPress={(e) => keyPressHandler(e, inputOne)}>
                 </input>
                 <span className='level__code'>(</span>
-                <img className='level__manta-ray' src={greyRay} alt='each ray' />
-                <span className='level__code'>=&gt; addAccessory( </span>
-                <img className='level__hat' src={hat} alt='hat' />
+                <img className='level__manta-ray' src={greyRayHat} alt='each ray' />
+                <span className='level__code'>=&gt; </span>
+                <img className='level__manta-ray' src={greyRayHat} alt='each ray' />
+                <span className='level__code'>===</span>
+                <img className='level__manta-ray' src={redRayHat} alt='red ray' />
                 <span>);</span>
             </div>
             <p className='level__code'>
-                cowboys = [
+                suspect = [
                 {
-                    cowboyImgs.map((img, index) => {
+                    suspect.map((img, index) => {
                         // conditional ensures no additional comma on the last item
-                        return index < cowboyImgs.length - 1 ?
+                        return index < suspect.length - 1 ?
                         <><img className='level__manta-ray-hat' src={img} alt='manta ray'/><span>,</span></>
                         : <><img className='level__manta-ray-hat' src={img} alt='manta ray'/></>
                     })
@@ -120,7 +127,7 @@ const LevelSix = ({ currentLevel, newLevel }) => {
                 <> 
                 <p className='level__instructions'>{currentLevel.questionTwo}</p>
                 <div className='level__input-container'>
-                    <p className='level__code'>cowboys.</p>
+                    <p className='level__code'>let suspects = mantArray.</p>
                     <input 
                         className='level__code level__code--input' 
                         ref={answerTwo} 
@@ -129,19 +136,26 @@ const LevelSix = ({ currentLevel, newLevel }) => {
                         onKeyPress={(e) => keyPressHandler(e, inputTwo)}>
                     </input>
                     <span className='level__code'>(</span>
-                    <img className='level__manta-ray-hat' src={greyRayHat} alt='each ray' />
-                    <span className='level__code'>=&gt; startDance( </span>
-                    <img className='level__manta-ray-hat' src={greyRayHat} alt='each ray with hat' />
-                    <span>));</span>
+                    <img className='level__manta-ray' src={greyRayHat} alt='each ray' />
+                    <span className='level__code'>=&gt; </span>
+                    <img className='level__manta-ray' src={greyRayHat} alt='each ray' />
+                    <span className='level__code'>===</span>
+                    <img className='level__manta-ray' src={redRayHat} alt='red ray' />
+                    <span>);</span>
                     <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </div>
                 <p className='level__code'>
-                    {
-                        cowboyImgs.map(img => {
-                            return <img className={inputTwoCorrect ? 'level__manta-ray-hat level__manta-ray-hat--dance': 'level__manta-ray-hat'} src={img} alt='manta ray'/>
-                        })
-                    }
-                </p>
+                suspects = [
+                {
+                    suspects.map((img, index) => {
+                        // conditional ensures no additional comma on the last item
+                        return index < suspects.length - 1 ?
+                        <><img className='level__manta-ray-hat' src={img} alt='manta ray'/><span>,</span></>
+                        : <><img className='level__manta-ray-hat' src={img} alt='manta ray'/></>
+                    })
+                }
+                ];
+            </p>
                 <button className='level__button--tablet' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 <button className='level__button--mobile' onClick={() => checkAnswer(inputTwo)}>Go!</button>
                 </>
@@ -149,16 +163,18 @@ const LevelSix = ({ currentLevel, newLevel }) => {
             {/* render next level button when both answers are correct */}
             {
                 (inputOneCorrect && inputTwoCorrect) && 
-                <button 
-                className='level__next-button' 
-                onClick={() => {
-                    clearInput(); setInputOneCorrect(false); setInputTwoCorrect(false); newLevel((currentLevel.id + 1));
-                }}>
-                    Next
-                </button> 
+                // <button 
+                // className='level__next-button' 
+                // onClick={() => {
+                //     clearInput(); setInputOneCorrect(false); setInputTwoCorrect(false); newLevel((currentLevel.id + 1));
+                // }}>
+                //     Next
+                // </button> 
+                // : null
+                <p className='level__code'>Thanks for playing! More levels coming soon.</p>
             }
         </section>
     );
 }
 
-export default LevelSix;
+export default LevelSeven;

@@ -11,6 +11,7 @@ const SelectLevel = ({ currentLevel, newLevel }) => {
             <option className='select__option' value='4' selected={currentLevel === 4 && 'selected'}>Level 4</option>
             <option className='select__option' value='5' selected={currentLevel === 5 && 'selected'}>Level 5</option>
             <option className='select__option' value='6' selected={currentLevel === 6 && 'selected'}>Level 6</option>
+            <option className='select__option' value='7' selected={currentLevel === 7 && 'selected'}>Level 7</option>
         </select>
     );
 }
